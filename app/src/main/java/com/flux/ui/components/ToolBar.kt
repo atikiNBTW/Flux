@@ -43,9 +43,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.flux.R
 import com.flux.navigation.NavRoutes
+import com.flux.other.Notifications
 import com.flux.other.canScheduleReminder
-import com.flux.other.isNotificationPermissionGranted
-import com.flux.other.openAppNotificationSettings
 import com.flux.other.requestExactAlarmPermission
 
 @Composable
@@ -164,15 +163,15 @@ fun HabitToolBar(context: Context, onAddClick: () -> Unit) {
             ).show()
             requestExactAlarmPermission(context)
         }
-        if (!isNotificationPermissionGranted(context)) {
+        if (!Notifications.isNotificationPermissionGranted(context)) {
             Toast.makeText(
                 context,
                 context.getText(R.string.Notification_Permission),
                 Toast.LENGTH_SHORT
             ).show()
-            openAppNotificationSettings(context)
+            Notifications.openAppNotificationSettings(context)
         }
-        if (canScheduleReminder(context) && isNotificationPermissionGranted(context)) {
+        if (canScheduleReminder(context) && Notifications.isNotificationPermissionGranted(context)) {
             onAddClick()
         }
     }) { Icon(Icons.Default.Add, null, tint = MaterialTheme.colorScheme.primary) }
@@ -190,15 +189,15 @@ fun EventToolBar(context: Context, navController: NavController, workspaceId: Lo
             ).show()
             requestExactAlarmPermission(context)
         }
-        if (!isNotificationPermissionGranted(context)) {
+        if (!Notifications.isNotificationPermissionGranted(context)) {
             Toast.makeText(
                 context,
                 context.getText(R.string.Notification_Permission),
                 Toast.LENGTH_SHORT
             ).show()
-            openAppNotificationSettings(context)
+            Notifications.openAppNotificationSettings(context)
         }
-        if (canScheduleReminder(context) && isNotificationPermissionGranted(context)) {
+        if (canScheduleReminder(context) && Notifications.isNotificationPermissionGranted(context)) {
             navController.navigate(NavRoutes.EventDetails.withArgs(workspaceId, -1))
         }
     }) { Icon(Icons.Default.Add, null, tint = MaterialTheme.colorScheme.primary) }

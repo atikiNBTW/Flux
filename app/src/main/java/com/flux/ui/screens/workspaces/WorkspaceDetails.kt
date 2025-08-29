@@ -48,7 +48,7 @@ import com.flux.data.model.WorkspaceModel
 import com.flux.navigation.NavRoutes
 import com.flux.other.icons
 import com.flux.ui.components.AddNewSpacesBottomSheet
-import com.flux.ui.components.CalenderToolBar
+import com.flux.ui.components.CalendarToolBar
 import com.flux.ui.components.ChangeIconBottomSheet
 import com.flux.ui.components.DeleteAlert
 import com.flux.ui.components.EventToolBar
